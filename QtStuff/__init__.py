@@ -1,1 +1,1 @@
-from QtVariant import QtCore, QtGui, QtWebKit, QtLoadUi
+from QtVariant import *

@@ -3,36 +3,9 @@ import images
 import os
 from QtVariant import QtCore, QtGui
 
-class PopupDialogMixin(object):
-    """
-    Mixin for making a QDialog a 'popup' dialog.
-    I.e: No frame, appears directly under the calling widget and dissapears when the user clicks elsewhere
-    """
-    __slots__ = ()
-    def makePopup(self, callWidget):
-        self.setContentsMargins(0,0,0,0)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.Popup)
-        self.setObjectName('PopupDialog') # Necessary?
-
-        point = callWidget.rect().bottomRight()
-        global_point = callWidget.mapToGlobal(point)
-        self.move(global_point - QtCore.QPoint(self.width()/2, 0))      
-
-    def resizeEvent(self, event):
-        """ Overriding resizeEvent to force rounded corners """
-        leBitmap = QtGui.QBitmap(self.size())
-        painter = QtGui.QPainter(leBitmap)
-        painter.setRenderHint(QtGui.QPainter.Antialiasing)
-        painter.setBrush(QtCore.Qt.color1)
-        painter.drawRoundedRect(self.rect(), 5, 5)
-        painter.end()
-
-        self.setMask(leBitmap)
-
-
 class JWindow(QtGui.QMainWindow):
     
-    def __init__(self, name):
+    def __init__(self, name, rmlIcon = True):
         """
         Provides a basic application window with the following already initialised:
         - Status bar (JWindow.statusbar)
@@ -46,14 +19,14 @@ class JWindow(QtGui.QMainWindow):
         Inherit from JWindow and redefine the initUI method.
         """
         super(JWindow, self).__init__()
-        self.standard_setup(name)  
+        self.standard_setup(name, rmlIcon)  
         self.standard_actions()
         self.initUI()
 
     def initUI(self):
         raise NotImplementedError("Override this method to add functionality to your GUI")
 
-    def standard_setup(self, name):
+    def standard_setup(self, name, rmlIcon = True):
         """ Setups a main window with a central widget, name, statusbar, JBA logo and centers on the screen"""
         self.mainWidget = QtGui.QFrame()
         self.mainWidget.setObjectName("mainWidget")
@@ -73,7 +46,10 @@ class JWindow(QtGui.QMainWindow):
         self.exitAction.triggered.connect(QtCore.QCoreApplication.instance().exit)    
 
     def make_frameless(self):
-        """ Makes a 'frameless' window, but maintains title bar, resize and dragndrop"""
+        """ 
+        Makes a 'frameless' window, but maintains title bar, resize and dragndrop
+        TODO: Implement this as a mixin
+        """
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
     def center(self):
@@ -96,8 +72,9 @@ class JWindow(QtGui.QMainWindow):
 
 class ExitMessage(QtGui.QMessageBox):
     
-    def __init___(self, parent):
-        super(JWindow, self).__init__()
+    def __init___(self, parent = None):
+        """ A simple dialog for asking for confirmation """
+        super(ExitMessage, self).__init__(parent)
 
     def run(self, text = "Like, for real?"):
         self.setText(text)
@@ -124,13 +101,17 @@ class AppError(QtGui.QErrorMessage):
         self.setWindowTitle('Application Error')
 
 def icons(name):
-
+    """ Returns a QtGui.QIcon for the given icon name """
     val = _iconFiles[name]
     ico = QtGui.QIcon()
     ico.addFile(val[0], mode = QtGui.QIcon.Mode.Normal)
     ico.addFile(val[1], mode = QtGui.QIcon.Mode.Active)
 
     return ico
+    
+def what_icons():
+    """ Returns the names of available icons """
+    return _iconFiles.keys()
 
 _iconFiles = {'more':[':Images/GreyCircles/more.png',':Images/GreyCircles/more_halo.png'],
                 'annotate': [':Images/GreyCircles/annotate.png',':Images/GreyCircles/annotate_halo_w.png'],
