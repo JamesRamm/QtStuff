@@ -5,7 +5,7 @@ from QtVariant import QtCore, QtGui
 
 class JWindow(QtGui.QMainWindow):
     
-    def __init__(self, name, rmlIcon = True):
+    def __init__(self, name, iconName = "risk_logo"):
         """
         Provides a basic application window with the following already initialised:
         - Status bar (JWindow.statusbar)
@@ -19,23 +19,22 @@ class JWindow(QtGui.QMainWindow):
         Inherit from JWindow and redefine the initUI method.
         """
         super(JWindow, self).__init__()
-        self.standard_setup(name, rmlIcon)  
+        self.standard_setup(name, iconName)  
         self.standard_actions()
         self.initUI()
 
     def initUI(self):
         raise NotImplementedError("Override this method to add functionality to your GUI")
 
-    def standard_setup(self, name, rmlIcon = True):
+    def standard_setup(self, name, iconName = "risk_logo"):
         """ Setups a main window with a central widget, name, statusbar, JBA logo and centers on the screen"""
         self.mainWidget = QtGui.QFrame()
         self.mainWidget.setObjectName("mainWidget")
         self.setCentralWidget(self.mainWidget)
         self.statusbar = self.statusBar()
         self.mainWidget.setContentsMargins(0,0,0,0)
-
         self.setWindowTitle(name)
-        self.setWindowIcon(icons('risk_logo'))
+        self.setWindowIcon(icons(iconName))
         self.resize(1046, 600) #width, height.
         self.center()   
 
