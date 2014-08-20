@@ -65,10 +65,10 @@
     <file>Images/GreyCircles/setupDB_halo_w.png</file>
     <file>Images/Misc/polygon.png</file>
     <file>Images/Misc/line.png</file>
-    <file>Images/Misc/orange.png</file>
-    <file>Images/Misc/grey.png</file>
-    <file>Images/Misc/dark_blue.png</file>
-    <file>Images/Misc/purple.png</file>
+    <file>Images/Misc/solidLine.bmp</file>
+    <file>Images/Misc/dashedLine.bmp</file>
+    <file>Images/Misc/dottedLine.bmp</file>
+    <file>Images/Misc/dashDotLine.bmp</file>
     <file>Images/Misc/light_blue.png</file>
     <file>Images/Misc/black.png</file>
     <file>Images/cmaps/Accent.png</file>

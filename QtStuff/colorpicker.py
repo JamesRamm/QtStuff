@@ -1,6 +1,7 @@
 """
 2014 James Ramm
 Amendments to the original file have been made for use with the QtStuff library.
+A new class for creating a ColorButton (rather than just using the ColorDisplay) has been created
 Original copyright notice below.
 
 Copyright (c) 2013 Victor Wahlstrom
@@ -64,7 +65,7 @@ class ColorWidget(QtGui.QWidget):
 
     def __init__(self, parent=None):
         super(ColorWidget, self).__init__(parent)
-
+        self.setContentsMargins(0,0,0,0)
         self._color = QtGui.QColor()
 
     def color(self):
@@ -110,12 +111,12 @@ class ColorPicker(ColorWidget):
         super(ColorWidget, self).__init__(parent)
 
         layout = QtGui.QHBoxLayout()
+        layout.setContentsMargins(0,0,0,0)
         self._hex = ColorHexEdit()
 
-        layout.setContentsMargins(0, 0, 0, 0)
-
-        self._display = ColorDisplay()
+        self._display = ColorButton(self)
         self._display.setMinimumSize(15, 15)
+
         size_policy = QtGui.QSizePolicy()
         size_policy.setHorizontalPolicy(QtGui.QSizePolicy.Minimum)
         self._display.setSizePolicy(size_policy)
@@ -133,7 +134,7 @@ class ColorPicker(ColorWidget):
         self._display.clicked.connect(self._on_display_clicked)
 
         self._connection_list = [self._hex,
-                          self._display,
+                          self._display.colorDisplay,
                           self._popup]
 
         for x in self._connection_list:
@@ -181,7 +182,7 @@ class ColorPicker(ColorWidget):
             layout = QtGui.QVBoxLayout()
             self._hex = ColorHexEdit()
 
-            self._display = ColorDisplay()
+            self._display = ColorButton()
             self._display.setMinimumSize(15, 15)
             size_policy = QtGui.QSizePolicy()
             size_policy.setHorizontalPolicy(QtGui.QSizePolicy.Minimum)
@@ -294,7 +295,7 @@ class ColorPicker(ColorWidget):
 
             self._connection_list = [self._wheel,
                               self._hex,
-                              self._display,
+                              self._display.colorDisplay,
                               self._value_slider,
                               self._red_slider,
                               self._green_slider,
@@ -350,6 +351,7 @@ class ColorHexEdit(ColorWidget):
 
         layout = QtGui.QHBoxLayout()
         layout.setSpacing(0)
+        layout.setContentsMargins(0,0,0,0)
 
         hash_label = QtGui.QLabel()
         hash_label.setText("#")
@@ -437,6 +439,7 @@ class ColorDisplay(ColorWidget):
         :param parent: parent widget (optional)
         """
         super(ColorDisplay, self).__init__(parent)
+        
 
     def mouseReleaseEvent(self, event):
         self.clicked.emit()
@@ -453,6 +456,23 @@ class ColorDisplay(ColorWidget):
 
         painter.restore()
 
+class ColorButton(QtGui.QPushButton):
+    """ Puts the colordisplay widget in a pushbutton"""
+    def __init__(self, parent = None):
+        super(ColorButton, self).__init__(parent)
+        self.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.setObjectName("ColourButton")
+        hlayout = QtGui.QHBoxLayout()
+        self.colorDisplay = ColorDisplay(self)
+        self.colorDisplay.setContentsMargins(0,0,0,0)
+        self.colorDisplay.mouseReleaseEvent = self.mouseReleaseEvent
+        hlayout.addWidget(self.colorDisplay)
+        hlayout.setContentsMargins(1,1,1,1)
+        self.setContentsMargins(0,0,0,0)
+        self.setLayout(hlayout)
+
+    def mouseReleaseEvent(self, event):
+        super(ColorButton, self).mouseReleaseEvent(event)
 
 class ComponentSlider(ColorWidget):
     """
@@ -663,7 +683,6 @@ class ComponentSlider(ColorWidget):
         painter.drawLine(line3)
 
         painter.restore()
-
 
 class HueSaturationWheel(ColorWidget):
     """
