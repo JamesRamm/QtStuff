@@ -12,7 +12,6 @@ class QCacheManager(type(QtCore.QObject)):
 
     def __call__(self, *args):
         if args in self.__cache:
-            print "We got that one"
             return self.__cache[args]
         else:
             obj = super(QCacheManager, self).__call__(*args)
@@ -26,7 +25,7 @@ class Logger(QtCore.QObject):
     Enables errors etc to be accessed from anywhere and handle in any number of ways (that does not 
     involve horrible popup dialogs)
     """
-    __metaclass__ = QCacheManager
+    __metaclass__ = QCacheManager 
     # Signal to be used by the logger
     info = QtCore.Signal(str)
     warn = QtCore.Signal(str)
@@ -39,8 +38,8 @@ class Logger(QtCore.QObject):
 
     def log(self, message, severity, toFile = True):
         """ Message handler. Emits messages, where severity indicates the signal to use. Will also write the message out to a log file. """
-        fname = "".join(self.name, ".log")
-        fname = os.path.join(path, self.name)
+        fname = "".join([self.name, ".log"])
+        fname = os.path.join(self.path, self.name)
         severity = severity.lower()
         signal = getattr(self, severity)
         signal.emit(message)
