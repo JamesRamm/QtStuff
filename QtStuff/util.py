@@ -1,4 +1,24 @@
 from QtVariant import QtCore
+import weakref
+import os
+
+class QCacheManager(type(QtCore.QObject)):
+    def __init__(self, *args, **kwargs):
+        """
+        Metaclass to enabling caching of PySide objects. 
+        """
+        super(QCacheManager, self).__init__(*args, **kwargs)
+        self.__cache = weakref.WeakValueDictionary()
+
+    def __call__(self, *args):
+        if args in self.__cache:
+            print "We got that one"
+            return self.__cache[args]
+        else:
+            obj = super(QCacheManager, self).__call__(*args)
+            self.__cache[args] = obj
+            return obj
+
 
 class Logger(QtCore.QObject):
     """
@@ -6,16 +26,21 @@ class Logger(QtCore.QObject):
     Enables errors etc to be accessed from anywhere and handle in any number of ways (that does not 
     involve horrible popup dialogs)
     """
-
+    __metaclass__ = QCacheManager
     # Signal to be used by the logger
     info = QtCore.Signal(str)
     warn = QtCore.Signal(str)
     error = QtCore.Signal(str)
     priority = QtCore.Signal(str)
+    def __init__(self, name = 'applicationLog', path = ""):
+        super(Logger, self).__init__()
+        self.name = name
+        self.path = path
 
-    def log(self, message, severity, toFile = True, fname = 'applicationLog.log'):
+    def log(self, message, severity, toFile = True):
         """ Message handler. Emits messages, where severity indicates the signal to use. Will also write the message out to a log file. """
-
+        fname = "".join(self.name, ".log")
+        fname = os.path.join(path, self.name)
         severity = severity.lower()
         signal = getattr(self, severity)
         signal.emit(message)
@@ -24,8 +49,6 @@ class Logger(QtCore.QObject):
             f = open(fname, 'a+')
             f.write("{0}: {1}\n".format(severity, message))
             f.close()
-
-
 
 def workInThread(workerClass, workerFunc, finishedFunc = None):
         """
