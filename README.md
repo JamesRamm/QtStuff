@@ -1,5 +1,6 @@
 QtStuff
 =======
+[![Documentation Status](https://readthedocs.org/projects/qtstuff/badge/?version=latest)](https://readthedocs.org/projects/qtstuff/?badge=latest)
 
 QtStuff: Classes and helper functions for working with PySide/PyQt
 
