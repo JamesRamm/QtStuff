@@ -1,10 +1,9 @@
 import sys
 import images
 import os
-from QtVariant import QtCore, QtGui
+from QtStff.QtVariant import QtCore, QtGui
 
 class JWindow(QtGui.QMainWindow):
-    
     def __init__(self, name, iconName = "risk_logo"):
         """
         Provides a basic application window with the following already initialised:
@@ -113,41 +112,41 @@ def what_icons():
     return _iconFiles.keys()
 
 _iconFiles = {'more':[':Images/GreyCircles/more.png',':Images/GreyCircles/more_halo.png'],
-                'annotate': [':Images/GreyCircles/annotate.png',':Images/GreyCircles/annotate_halo_w.png'],
-                'book': [':Images/GreyCircles/book.png',':Images/GreyCircles/book_halo_w.png'],
-                'check': [':Images/GreyCircles/check.png',':Images/GreyCircles/check_halo_w.png'],
-                'cog': [':Images/GreyCircles/cog.png',':Images/GreyCircles/cog_halo_w.png'],
-                'cross': [':Images/GreyCircles/cross.png',':Images/GreyCircles/cross_halo_w.png'],
-                'excel': [':Images/GreyCircles/excel.png',':Images/GreyCircles/excel_halo_W.png'],
-                'exit': [':Images/GreyCircles/exit.png',':Images/GreyCircles/exit_halo_w.png'],
-                'filter': [':Images/GreyCircles/filter.png',':Images/GreyCircles/filter.png'],
-                'filter_empty': [':Images/GreyCircles/filter_empty.png',':Images/GreyCircles/filter_empty_halo_w.png'],
-                'help': [':Images/GreyCircles/help.png',':Images/GreyCircles/help_halo_w.png'],
-                'open': [':Images/GreyCircles/open.png',':Images/GreyCircles/open_halo_w.png'],
-                'python': [':Images/GreyCircles/python.png',':Images/GreyCircles/python_halo_w.png'],
-                'question': [':Images/GreyCircles/question.png',':Images/GreyCircles/question_halo_w.png'],
-                'recycle': [':Images/GreyCircles/recycle.png',':Images/GreyCircles/recycle_halo_w.png'],
-                'save': [':Images/GreyCircles/save.png',':Images/GreyCircles/save_halo_w.png'],
-                'table': [':Images/GreyCircles/table.png',':Images/GreyCircles/table_halo_w.png'],
-                'polygon': [':Images/Misc/polygon.png',':Images/Misc/polygon.png'],
-                'line': [':Images/Misc/line.png',':Images/Misc/line.png'],
-                'update': [':Images/GreyCircles/update.png',':Images/GreyCircles/update_halo_w.png'],
-                'setupDB': [':Images/GreyCircles/setupDB.png',':Images/GreyCircles/setupDB_halo_w.png'],
-                'emptyDB': [':Images/GreyCircles/emptyDB.png',':Images/GreyCircles/emptyDB_halo_w.png'],
-                'polygon_circle': [':Images/GreyCircles/polygon_circle.png',':Images/GreyCircles/polygon_circle.png'],
-                'create_plot': [':Images/OrangeIcons/create_plot.png',':Images/OrangeIcons/create_plot.png'],
-                'plot_wizard': [':Images/OrangeIcons/plot_wizard.png',':Images/OrangeIcons/plot_wizard.png'],
-                'remove_plot': [':Images/OrangeIcons/remove_plot.png',':Images/OrangeIcons/remove_plot.png'],
-                'reset_chart': [':Images/OrangeIcons/reset_chart.png',':Images/OrangeIcons/reset_chart.png'],
-                'table_add': [':Images/OrangeIcons/table_add.png',':Images/OrangeIcons/table_add.png'],
-                'table_bin': [':Images/OrangeIcons/table_bin.png',':Images/OrangeIcons/table_bin.png'],
-                'table_delete': [':Images/OrangeIcons/table_delete.png',':Images/OrangeIcons/table_delete.png'],
-                'solid_line': [':Images/Misc/solidLine.bmp',':Images/Misc/solidLine.bmp'],
-                'dashed_line': [':Images/Misc/dashedLine.bmp',':Images/Misc/dashedLine.bmp'],
-                'dotted_line': [':Images/Misc/dottedLine.bmp',':Images/Misc/dottedLine.bmp'],
-                'dash_dot_line': [':Images/Misc/dashDotLine.bmp',':Images/Misc/dashDotLine.bmp'],
-                'black': [':Images/Misc/black.png',':Images/Misc/black.png'],
-                'light_blue': [':Images/Misc/light_blue.png',':Images/Misc/light_blue.png'],
-                'risk_logo': [':Images/TransLogo.png',':Images/TransLogo.png'],
-                'dropdown': [':Images/Misc/dropdown.png',':Images/Misc/dropdown.png']}
+              'annotate': [':Images/GreyCircles/annotate.png',':Images/GreyCircles/annotate_halo_w.png'],
+              'book': [':Images/GreyCircles/book.png',':Images/GreyCircles/book_halo_w.png'],
+              'check': [':Images/GreyCircles/check.png',':Images/GreyCircles/check_halo_w.png'],
+              'cog': [':Images/GreyCircles/cog.png',':Images/GreyCircles/cog_halo_w.png'],
+              'cross': [':Images/GreyCircles/cross.png',':Images/GreyCircles/cross_halo_w.png'],
+              'excel': [':Images/GreyCircles/excel.png',':Images/GreyCircles/excel_halo_W.png'],
+              'exit': [':Images/GreyCircles/exit.png',':Images/GreyCircles/exit_halo_w.png'],
+              'filter': [':Images/GreyCircles/filter.png',':Images/GreyCircles/filter.png'],
+              'filter_empty': [':Images/GreyCircles/filter_empty.png',':Images/GreyCircles/filter_empty_halo_w.png'],
+              'help': [':Images/GreyCircles/help.png',':Images/GreyCircles/help_halo_w.png'],
+              'open': [':Images/GreyCircles/open.png',':Images/GreyCircles/open_halo_w.png'],
+              'python': [':Images/GreyCircles/python.png',':Images/GreyCircles/python_halo_w.png'],
+              'question': [':Images/GreyCircles/question.png',':Images/GreyCircles/question_halo_w.png'],
+              'recycle': [':Images/GreyCircles/recycle.png',':Images/GreyCircles/recycle_halo_w.png'],
+              'save': [':Images/GreyCircles/save.png',':Images/GreyCircles/save_halo_w.png'],
+              'table': [':Images/GreyCircles/table.png',':Images/GreyCircles/table_halo_w.png'],
+              'polygon': [':Images/Misc/polygon.png',':Images/Misc/polygon.png'],
+              'line': [':Images/Misc/line.png',':Images/Misc/line.png'],
+              'update': [':Images/GreyCircles/update.png',':Images/GreyCircles/update_halo_w.png'],
+              'setupDB': [':Images/GreyCircles/setupDB.png',':Images/GreyCircles/setupDB_halo_w.png'],
+              'emptyDB': [':Images/GreyCircles/emptyDB.png',':Images/GreyCircles/emptyDB_halo_w.png'],
+              'polygon_circle': [':Images/GreyCircles/polygon_circle.png',':Images/GreyCircles/polygon_circle.png'],
+              'create_plot': [':Images/OrangeIcons/create_plot.png',':Images/OrangeIcons/create_plot.png'],
+              'plot_wizard': [':Images/OrangeIcons/plot_wizard.png',':Images/OrangeIcons/plot_wizard.png'],
+              'remove_plot': [':Images/OrangeIcons/remove_plot.png',':Images/OrangeIcons/remove_plot.png'],
+              'reset_chart': [':Images/OrangeIcons/reset_chart.png',':Images/OrangeIcons/reset_chart.png'],
+              'table_add': [':Images/OrangeIcons/table_add.png',':Images/OrangeIcons/table_add.png'],
+              'table_bin': [':Images/OrangeIcons/table_bin.png',':Images/OrangeIcons/table_bin.png'],
+              'table_delete': [':Images/OrangeIcons/table_delete.png',':Images/OrangeIcons/table_delete.png'],
+              'solid_line': [':Images/Misc/solidLine.bmp',':Images/Misc/solidLine.bmp'],
+              'dashed_line': [':Images/Misc/dashedLine.bmp',':Images/Misc/dashedLine.bmp'],
+              'dotted_line': [':Images/Misc/dottedLine.bmp',':Images/Misc/dottedLine.bmp'],
+              'dash_dot_line': [':Images/Misc/dashDotLine.bmp',':Images/Misc/dashDotLine.bmp'],
+              'black': [':Images/Misc/black.png',':Images/Misc/black.png'],
+              'light_blue': [':Images/Misc/light_blue.png',':Images/Misc/light_blue.png'],
+              'risk_logo': [':Images/TransLogo.png',':Images/TransLogo.png'],
+              'dropdown': [':Images/Misc/dropdown.png',':Images/Misc/dropdown.png']}
 

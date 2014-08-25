@@ -9,6 +9,7 @@ try:
     os.environ['QT_API'] = 'pyside'
 
     def QtLoadUi(uifile):
+        """ Wrapper for loading ui files from PySide """
         from PySide import QtUiTools
         return QtUiTools.QUiLoader().load(uifile)
 except ImportError:
@@ -16,9 +17,9 @@ except ImportError:
     os.environ['QT_API'] = 'pyqt'
 
     import sip
-    api2 = ['QData', 'QDateTime', 'QString', 'QTextStream',
-            'QTime', 'QUrl', 'QVariant']
-    for klass in api2:
+    apiTwo = ['QData', 'QDateTime', 'QString', 'QTextStream',
+              'QTime', 'QUrl', 'QVariant']
+    for klass in apiTwo:
         sip.setapi(klass, 2)
 
     QtCore.Signal = QtCore.pyqtSignal
@@ -26,9 +27,8 @@ except ImportError:
     QtCore.QString = str
 
     def QtLoadUi(uifile):
+        """ Wrapper for loading ui files from pyqt """
         from PyQt4 import uic
         return uic.loadUi(uifile)
 
-__all__ = [QtGui, QtCore, QtWebKit, QtLoadUi]
-    
-        
+__all__ = ['QtGui', 'QtCore', 'QtWebKit', 'QtLoadUi']

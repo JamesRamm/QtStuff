@@ -1,13 +1,19 @@
-from QtVariant import QtCore, QtGui
+"""
+Mixins: Inherit from these mixins to add additional
+behaviour to widgets/dialogs
+"""
+from QtStuff.QtVariant import QtCore, QtGui
 
 class PopupDialogMixin(object):
     """
     Mixin for making a QDialog a 'popup' dialog.
-    I.e: No frame, appears directly under the calling widget and dissapears when the user clicks elsewhere
+    I.e: No frame, appears directly under the calling widget
+    and dissapears when the user clicks elsewhere
     """
     __slots__ = ()
     def makePopup(self, callWidget):
-        self.setContentsMargins(0,0,0,0)
+        """ Make the dialog appear as a popup """
+        self.setContentsMargins(0, 0, 0, 0)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.Popup)
         self.setObjectName('PopupDialog') # Necessary?
 

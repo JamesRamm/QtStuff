@@ -108,7 +108,7 @@ class ColorPicker(ColorWidget):
         Constructs a ColorPicker instance.
         :param parent: parent widget (optional)
         """
-        super(ColorWidget, self).__init__(parent)
+        super(ColorPicker, self).__init__(parent)
 
         layout = QtGui.QHBoxLayout()
         layout.setContentsMargins(0,0,0,0)
@@ -167,7 +167,7 @@ class ColorPicker(ColorWidget):
             Constructs a ColorPicker._Popup instance.
             :param parent: parent widget (optional)
             """
-            super(ColorWidget, self).__init__(parent)
+            super(_Popup, self).__init__(parent)
 
             self.setWindowFlags(QtCore.Qt.Popup)
 

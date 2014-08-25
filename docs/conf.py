@@ -18,7 +18,7 @@ import os
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath(r'C:\Users\Jamesramm\workspace\RiskPy\trunk\riskpy'))
+#sys.path.insert(0, os.path.abspath(r'C:\Users\Jamesramm\workspace\RiskPy\trunk\riskpy'))
 
 # -- General configuration ------------------------------------------------
 
@@ -31,7 +31,6 @@ sys.path.insert(0, os.path.abspath(r'C:\Users\Jamesramm\workspace\RiskPy\trunk\r
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.pngmath',
-    'rst2pdf.pdfbuilder'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -47,8 +46,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'JBAPython'
-copyright = u'2014, James Ramm'
+project = u'QtStuff'
+copyright = u'2014, JBA Risk Management'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -116,7 +115,7 @@ html_theme_options = {
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'JBA Python Docs'
+html_title = 'QtStuffDocs'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -184,85 +183,6 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'riskpydoc'
 
-
-# -- Options for LaTeX output ---------------------------------------------
-
-latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-'papersize': 'a4paper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
-
-# Additional stuff for the LaTeX preamble.
-#'preamble':''
-}
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-  ('index', 'postgis.tex', u'Unified schemas and table definitions for flood map storage',
-   u'James Ramm', 'manual'),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-latex_logo = '_static/TransLogo.png'
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-#latex_use_parts = False
-
-# If true, show page references after internal links.
-#latex_show_pagerefs = False
-
-# If true, show URL addresses after external links.
-#latex_show_urls = False
-
-# Documents to append as an appendix to all manuals.
-#latex_appendices = []
-
-# If false, no module index is generated.
-#latex_domain_indices = True
-
-
-# -- Options for manual page output ---------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-#man_pages = [
-#    ('index', 'riskpy', u'riskpy Documentation',
-#     [u'James Ramm'], 1)
-#]
-
-# If true, show URL addresses after external links.
-#man_show_urls = False
-
-
-# -- Options for Texinfo output -------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-#texinfo_documents = [
-#  ('index', 'riskpy', u'riskpy Documentation',
-#   u'James Ramm', 'riskpy', 'One line description of project.',
-#   'Miscellaneous'),
-#]
-
-# Documents to append as an appendix to all manuals.
-#texinfo_appendices = []
-
-# If false, no module index is generated.
-#texinfo_domain_indices = True
-
-# How to display URL addresses: 'footnote', 'no', or 'inline'.
-#texinfo_show_urls = 'footnote'
-
-# If true, do not generate a @detailmenu in the "Top" node's menu.
-#texinfo_no_detailmenu = False
-
 # -- Options for PDF output --------------------------------------------------
 
 
@@ -282,7 +202,7 @@ latex_logo = '_static/TransLogo.png'
 
 # index filename, pdf filename, document title, author name
 pdf_documents = [
-('index', u'postgis', u'Unified approach to flood map data storage', u'James Ramm'),
+('index', u'qtstuff', u'QtStuff Guide', u'James Ramm'),
 ]
 
 
