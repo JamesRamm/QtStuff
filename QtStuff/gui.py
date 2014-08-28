@@ -1,7 +1,7 @@
 import sys
 import images
 import os
-from QtStff.QtVariant import QtCore, QtGui
+from QtStuff import QtCore, QtGui
 
 class JWindow(QtGui.QMainWindow):
     def __init__(self, name, iconName = "risk_logo"):

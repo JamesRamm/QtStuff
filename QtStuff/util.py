@@ -2,6 +2,7 @@
 from QtStuff.QtVariant import QtCore
 import weakref
 import os
+import logging
 
 class QCacheManager(type(QtCore.QObject)):
     """
@@ -19,40 +20,47 @@ class QCacheManager(type(QtCore.QObject)):
             self.__cache[args] = obj
             return obj
 
-
-class Logger(QtCore.QObject):
+class QLogHandler(QtCore.QObject):
     """
-    Logs all messages and emits a signal for each level of severity.
-    Enables errors etc to be accessed from anywhere and handle in any
-    number of ways (that does not involve horrible popup dialogs)
+    A file-like object to use in a StreamHandler for python logging
+    Will accept the logging message and emit it as a PySide/PyQt signal
+
+    Example
+    -------
+    ::
+
+        import logging
+        import sys
+        from QtStuff import QtGui
+        from QtStuff.util import QLogHandler
+
+        class MainWindow(QtGui.QMainWindow):
+            def __init__(self, parent=None):
+                super(MainWindow, self).__init__(parent)
+                self.statusbar = self.statusBar()
+                debug_log.stream.logged.connect(self.statusbar.showMessage)
+
+                logger.debug("This is a test message")
+
+        if __name__ == '__main__':             
+            logging.basicConfig(level = logging.DEBUG)
+
+            debug_log = logging.StreamHandler(stream = QLogHandler())
+            debug_log.setLevel(logging.DEBUG)
+
+            logger = logging.getLogger(__name__)
+            logger.addHandler(debug_log)
+            main = MainWindow()
+            main.show()
+            sys.exit(app.exec_())
     """
-    __metaclass__ = QCacheManager
-    # Signal to be used by the logger
-    info = QtCore.Signal(str)
-    warn = QtCore.Signal(str)
-    error = QtCore.Signal(str)
-    priority = QtCore.Signal(str)
-    def __init__(self, name='applicationLog', path=""):
-        super(Logger, self).__init__()
-        self.name = name
-        self.path = path
+    logged = QtCore.Signal(str)
 
-    def log(self, message, severity, toFile=True):
-        """
-        Message handler. Emits messages, where severity indicates
-        the signal to use. Will also write the message out to a log
-        file.
-        """
-        fname = "".join([self.name, ".log"])
-        fname = os.path.join(self.path, self.name)
-        severity = severity.lower()
-        signal = getattr(self, severity)
-        signal.emit(message)
+    def __init__(self, parent=None):
+        super(QLogHandler, self).__init__(parent)
 
-        if toFile:
-            f = open(fname, 'a+')
-            f.write("{0}: {1}\n".format(severity, message))
-            f.close()
+    def write(self, record):
+        self.logged.emit(record)
 
 def workInThread(workerClass, workerFunc, finishedFunc=None):
     """
