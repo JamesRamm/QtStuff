@@ -128,6 +128,7 @@ _iconFiles = {'more':[':Images/GreyCircles/more.png',':Images/GreyCircles/more_h
               'recycle': [':Images/GreyCircles/recycle.png',':Images/GreyCircles/recycle_halo_w.png'],
               'save': [':Images/GreyCircles/save.png',':Images/GreyCircles/save_halo_w.png'],
               'table': [':Images/GreyCircles/table.png',':Images/GreyCircles/table_halo_w.png'],
+              'info':  [':Images/GreyCircles/info.png',':Images/GreyCircles/info_halo_w.png'],
               'polygon': [':Images/Misc/polygon.png',':Images/Misc/polygon.png'],
               'line': [':Images/Misc/line.png',':Images/Misc/line.png'],
               'update': [':Images/GreyCircles/update.png',':Images/GreyCircles/update_halo_w.png'],
