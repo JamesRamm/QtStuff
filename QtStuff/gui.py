@@ -74,7 +74,7 @@ class ExitMessage(QtGui.QMessageBox):
         """ A simple dialog for asking for confirmation """
         super(ExitMessage, self).__init__(parent)
 
-    def run(self, text = "Like, for real?"):
+    def run(self, text = "Quit?"):
         self.setText(text)
         self.setIconPixmap(QtGui.QPixmap(':Images/GreyCircles/question.png'))
         self.setWindowIcon(icons('risk_logo'))

@@ -6,6 +6,7 @@ import os
 
 try:
     from PySide import QtGui, QtCore, QtWebKit
+    
     os.environ['QT_API'] = 'pyside'
 
     def QtLoadUi(uifile):
@@ -31,4 +32,5 @@ except ImportError:
         from PyQt4 import uic
         return uic.loadUi(uifile)
 
-__all__ = ['QtGui', 'QtCore', 'QtWebKit', 'QtLoadUi']
+__all__ = ['QtGui', 'QtCore', 'QtLoadUi', 'QtWebKit']
+
