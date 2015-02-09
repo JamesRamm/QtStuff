@@ -5,7 +5,7 @@ This module supports both Qt Python API's (PySide and PyQt4)
 import os
 
 try:
-    from PySide import QtGui, QtCore, QtWebKit
+    from PySide import QtGui, QtCore, QtWebKit, QtSvg
     
     os.environ['QT_API'] = 'pyside'
 
@@ -14,7 +14,7 @@ try:
         from PySide import QtUiTools
         return QtUiTools.QUiLoader().load(uifile)
 except ImportError:
-    from PyQt4 import QtGui, QtCore, QtWebKit
+    from PyQt4 import QtGui, QtCore, QtWebKit, QtSvg
     os.environ['QT_API'] = 'pyqt'
 
     import sip
@@ -32,5 +32,5 @@ except ImportError:
         from PyQt4 import uic
         return uic.loadUi(uifile)
 
-__all__ = ['QtGui', 'QtCore', 'QtLoadUi', 'QtWebKit']
+__all__ = ['QtGui', 'QtCore', 'QtLoadUi', 'QtWebKit', 'QtSvg']
 

@@ -2,9 +2,9 @@ QtStuff
 =======
 [![Documentation Status](https://readthedocs.org/projects/qtstuff/badge/?version=latest)](https://readthedocs.org/projects/qtstuff/?badge=latest)
 
-QtStuff: Classes and helper functions for working with PySide/PyQt
+QtStuff: Classes and helper functions for working with Pyqt5/PyQt4/PySide
 
-QtStuff ('Cute Stuff') provides helpful classes and a nice icon set for use with PySide/PyQt. It also provides a PySide/PyQt agnostic wrapper around the library. No matter which version you have installed, just do:
+QtStuff ('Cute Stuff') provides helpful classes and a nice icon set for use with PySide/PyQt4/5. It also provides a PySide/PyQt agnostic wrapper around the library. No matter which version you have installed, just do:
 
     from QtStuff import QtCore, QtGui, QtWebKit, QtLoadUi
 
@@ -16,7 +16,7 @@ Features
 
 Some of the features of QtStuff include:
 
-- A compatibility layer to allow your application to support PyQt or PySide 
+- A compatibility layer to allow your application to support PyQt4/5 or PySide 
 - A large icon set with corresponding API to easily get hold of `QIcon`objects for each item image.
 - Utility functions for logging, caching `QObject`derived classes, easy threading...
 - Mixins for creating popup dialogs
