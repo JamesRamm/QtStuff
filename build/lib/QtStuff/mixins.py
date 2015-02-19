@@ -2,7 +2,7 @@
 Mixins: Inherit from these mixins to add additional
 behaviour to widgets/dialogs
 """
-from QtStuff.QtVariant import QtCore, QtGui
+from QtStuff import QtCore, QtGui
 
 class PopupDialogMixin(object):
     """

@@ -6,7 +6,6 @@ QtStuff\console.py
 QtStuff\gui.py
 QtStuff\images.py
 QtStuff\mixins.py
-QtStuff\qtbinding.py
 QtStuff\util.py
 QtStuff\Images\README.txt
 QtStuff\Images\TransLogo.png

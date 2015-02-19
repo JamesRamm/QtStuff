@@ -1,5 +1,5 @@
 """ Utility functions for using Qt """
-from QtStuff.QtVariant import QtCore
+from QtStuff import QtCore
 import weakref
 import os
 import logging

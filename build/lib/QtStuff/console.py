@@ -12,7 +12,7 @@ embedded in your GUI.
 
 import sys
 from code import InteractiveConsole as _InteractiveConsole
-from QtVariant import QtCore, QtGui
+from QtStuff import QtCore, QtGui
 
 try:
     from cStringIO import StringIO

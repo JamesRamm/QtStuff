@@ -26,7 +26,7 @@ freely, subject to the following restrictions:
    distribution.
 """
 
-from QtVariant import QtGui, QtCore
+from QtStuff import QtGui, QtCore
 import math
 import sys
 
