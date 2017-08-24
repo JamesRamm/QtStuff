@@ -36,14 +36,9 @@ Download QtStuff and unzip to a folder of your choice. Then run::
 Contribute
 -------------
 
-Source Code: https://github.com/JBARisk/QtStuff
-Issue Tracker: https://github.com/JBARisk/QtStuff/issues
+Source Code: https://github.com/JamesRamm/QtStuff
+Issue Tracker: https://github.com/JamesRamm/QtStuff/issues
 
-Support
-----------
-
-If you are having issues, please let us know.
-You can contact the development team at: james.ramm@jbarisk.com
 
 License
 ---------
